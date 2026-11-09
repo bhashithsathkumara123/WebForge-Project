@@ -1,0 +1,625 @@
+/* ===== Modern Healthcare Palette & Variables ===== */
+:root {
+    --primary: #d90429;
+    --primary-hover: #b8001f;
+    --primary-light: #ffe5e8;
+    --secondary: #1d3557;
+    --accent: #457b9d;
+    /* colours taken from the banner photo */
+    --teal: #a7c0bc;
+    --teal-dark: #8fb0aa;
+    --teal-soft: #dde9e6;
+    --bg-main: #e8f0ee;
+    --surface: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #cbdad7;
+    --success: #10b981;
+    --success-bg: #ecfdf5;
+    --warning: #f59e0b;
+    --warning-bg: #fffbeb;
+    --danger: #ef4444;
+    --danger-bg: #fef2f2;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main.container {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    flex: 1;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+h1, h2, h3, h4 {
+    color: var(--secondary);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    font-size: 1.35rem;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--teal);
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Header and Navigation ===== */
+.site-header {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 3px solid var(--teal);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo:hover {
+    color: var(--primary-hover);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav a, .link-button {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+nav a:hover, .link-button:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+    /* same teal as the banner */
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    color: var(--secondary);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: auto;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: #fff !important;
+    border: 1px solid var(--primary);
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(217, 4, 41, 0.2);
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(217, 4, 41, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary);
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background: var(--primary-light);
+    color: var(--primary-hover) !important;
+    box-shadow: none;
+}
+
+.btn-small {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.85rem;
+    border-radius: var(--radius-sm);
+}
+
+/* ===== Cards & Grid Layouts ===== */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+}
+
+.chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.85rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.chip:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.chip strong {
+    display: block;
+    font-size: 1.35rem;
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.chip span {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ===== Form Styling ===== */
+.form-narrow {
+    max-width: 480px;
+    margin: 0 auto 2rem auto;
+}
+
+.field {
+    margin-bottom: 1.25rem;
+}
+
+.field label, label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--secondary);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: var(--surface);
+    transition: var(--transition);
+    color: var(--text-main);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.form-inline {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.form-inline .field {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 180px;
+}
+
+.hint {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.small-input {
+    width: 80px;
+    padding: 0.4rem 0.6rem;
+    text-align: center;
+}
+
+/* ===== Alerts & Banners ===== */
+.alert {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.alert-success {
+    background: var(--success-bg);
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+    background: var(--danger-bg);
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.error-list {
+    background: var(--danger-bg);
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem 0.85rem 2.25rem;
+    margin: 0 0 1.25rem 0;
+    font-size: 0.9rem;
+}
+
+.banner {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.banner-critical {
+    background: var(--danger-bg);
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.banner-low {
+    background: var(--warning-bg);
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.banner-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ===== Tables & Status Badges ===== */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    background: var(--surface);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    font-size: 0.925rem;
+}
+
+th {
+    background: var(--teal-soft);
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.775rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.badge-ok, .status-approved, .status-confirmed {
+    background: var(--success-bg);
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.badge-low, .status-pending {
+    background: var(--warning-bg);
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.badge-critical, .status-rejected, .status-declined {
+    background: var(--danger-bg);
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* ===== Responsive Breakpoints ===== */
+@media (max-width: 768px) {
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding-top: 0.75rem;
+        gap: 0.5rem;
+    }
+    nav.open {
+        display: flex;
+    }
+    nav a, .link-button {
+        padding: 0.6rem 0.8rem;
+    }
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* ===== Banner at the top of every page: the header sits on top of the picture ===== */
+.top-banner {
+    background: url('../images/banner.jpg') left 43% / cover no-repeat #a7c0bc;
+    border-bottom: 3px solid var(--teal-dark);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.top-banner-home { min-height: clamp(400px, 33vw, 620px); }
+/* inner pages: slimmer, picture shifted so the heart sits below the floating bar */
+.top-banner-slim {
+    min-height: clamp(250px, 19vw, 340px);
+    background-position: left 32%;
+}
+
+/* the header is see-through and not sticky here, the picture shows behind it */
+.top-banner .site-header {
+    position: relative;
+    background: transparent;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+/* logo + links float on the banner inside a soft white bar so they are always readable */
+.top-banner .nav-bar {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    width: calc(100% - 2rem);
+    max-width: 1100px;
+    margin-top: 1.1rem;
+    padding: 0.7rem 1.25rem;
+}
+
+/* heading and text on the empty right side of the picture */
+.top-banner .banner-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 4% 2.5rem 58%;
+}
+
+.banner-text h1 {
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+}
+
+.banner-text p {
+    font-size: 1.15rem;
+    color: #2b4a5a;
+    max-width: 520px;
+    margin: 0;
+}
+
+.banner-text strong {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.banner-text span {
+    color: #2b4a5a;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    /* on phones the picture is on top, the text goes under it */
+    .top-banner {
+        background: url('../images/banner.jpg') left top / 170% auto no-repeat #a7c0bc;
+    }
+    .top-banner-home,
+    .top-banner-slim { min-height: 0; }
+    .top-banner-slim { min-height: 44vw; background-position: left top; }   /* grows when the menu opens */
+    .top-banner .nav-bar {
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+        padding: 0.55rem 1rem;
+    }
+    .top-banner .banner-text {
+        text-align: center;
+        padding: 0 1.25rem 1.75rem;
+    }
+    .top-banner-home .banner-text {
+        padding-top: calc(72vw - 4rem);
+    }
+    .banner-text p {
+        margin: 0 auto;
+    }
+    .top-banner-slim .banner-text {
+        display: none;   /* inner pages: only the picture and the menu */
+    }
+}
+
+/* ===== Own banner pictures for the Login and Register pages ===== */
+.top-banner-login,
+.top-banner-register {
+    min-height: clamp(290px, 22vw, 380px);   /* a little taller so the people sit below the menu bar */
+}
+
+.top-banner-login {
+    background-image: url('../images/login-banner.jpg');
+    background-position: left 46%;
+}
+
+.top-banner-register {
+    background-image: url('../images/register-banner.jpg');
+    background-position: left 0%;
+}
+
+@media (max-width: 768px) {
+    /* phones: the picture starts just under the menu bar and is a little taller */
+    .top-banner-login,
+    .top-banner-register {
+        background-size: 160% auto;
+        background-position: left 4.5rem;
+        min-height: 62vw;
+    }
+}

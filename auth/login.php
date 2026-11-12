@@ -4,7 +4,7 @@ require_once __DIR__ . '/../includes/auth.php';
 $error = '';
 $email = '';
 
-// Handle the submitted form
+//checks whether the data is submitted through post
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = post('email');
     $password = $_POST['password'] ?? '';

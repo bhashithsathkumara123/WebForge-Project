@@ -1,17 +1,17 @@
 <?php
-// Start the session, load settings and helpers (every page includes this file)
+// Start the session if the session has not been started yet.
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once __DIR__ . '/../database/db.php';
 require_once __DIR__ . '/functions.php';
 
-// Is someone logged in?
+// Checks whether a user has logged in.
 function isLoggedIn() {
     return isset($_SESSION['user_id']);
 }
 
-// Allow only one role on a page, otherwise send the visitor to the login page
+// Enforcing role based restrictions
 function requireRole($role) {
     if (!isLoggedIn() || $_SESSION['role'] !== $role) {
         setFlash('error', 'Please log in with the correct account to open that page.');

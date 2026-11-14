@@ -10,7 +10,7 @@ $searched = isset($_POST['search']);
 $searchType = post('blood_type') ?: $_SESSION['blood_type'];
 $searchUnits = post('units') ?: '1';
 
-// Show one results table; each row has a button that opens the request form
+// Show one results table; each row has a button that opens the request form for that hospital and blood type.
 function showStockTable($rows, $units) {
     echo '<div class="table-wrap"><table>';
     echo '<tr><th>Hospital</th><th>Blood type</th><th>Units available</th><th></th></tr>';
@@ -118,3 +118,4 @@ require __DIR__ . '/../includes/header.php';
     </div>
 <?php endif; ?>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
+

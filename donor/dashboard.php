@@ -9,9 +9,12 @@ $hospitalIds = array_column($hospitals, 'id');
 // Earliest date this donor may pledge (today, or the end of the 4-month gap)
 $eligible = nextEligibleDate($pdo, $donorId);
 $today = date('Y-m-d');
+// Donor can donate now if they have no restriction or the eligible date has already passed
 $canDonate = ($eligible === null || $eligible <= $today);
+// Minimum selectable pledge date: today if eligible, otherwise the next eligible date
 $minDate = $canDonate ? $today : $eligible;
 
+// Holds validation error messages to show above the form
 $errors = [];
 $hospitalId = post('hospital_id');   // also used to pre-select the hospital from an alert
 $pledgeDate = '';
@@ -23,10 +26,12 @@ if (isset($_POST['send_pledge'])) {
     // Date must be a real date in the format Y-m-d
     $date = DateTime::createFromFormat('Y-m-d', $pledgeDate);
     $validDate = $date && $date->format('Y-m-d') === $pledgeDate;
-
+    
+    // The chosen hospital must be one of the real hospitals loaded above
     if (!in_array((int)$hospitalId, $hospitalIds)) {
         $errors[] = 'Please choose a hospital.';
     }
+    // Check the date is valid, and not earlier than the donor's earliest allowed date
     if (!$validDate) {
         $errors[] = 'Please choose a valid date.';
     } elseif ($pledgeDate < $minDate) {
@@ -34,6 +39,7 @@ if (isset($_POST['send_pledge'])) {
     }
 
     // Only one pending pledge at a time
+    // (skipped if there are already validation errors)
     if (!$errors) {
         $stmt = $pdo->prepare("SELECT id FROM donation_pledges WHERE donor_id = ? AND status = 'Pending'");
         $stmt->execute([$donorId]);
@@ -46,6 +52,7 @@ if (isset($_POST['send_pledge'])) {
     if (!$errors) {
         $stmt = $pdo->prepare('INSERT INTO donation_pledges (donor_id, hospital_id, pledge_date) VALUES (?, ?, ?)');
         $stmt->execute([$donorId, (int)$hospitalId, $pledgeDate]);
+        // Show a success message after the redirect, then go back to the dashboard (avoids form resubmission)
         setFlash('success', 'Thank you! Your pledge was sent to the hospital.');
         redirect('donor/dashboard.php');
     }
@@ -110,7 +117,7 @@ require __DIR__ . '/../includes/header.php';
     </div>
     <button type="submit" class="btn">Send pledge</button>
 </form>
-
+<?php /* ---------- All pledges (any status) ---------- */ ?>
 <h2>My pledges</h2>
 <?php if (!$pledges): ?>
     <p>You have no pledges yet.</p>

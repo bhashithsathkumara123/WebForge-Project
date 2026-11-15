@@ -1,11 +1,11 @@
 <?php
-// Database settings - change these if your XAMPP/WAMP setup is different
+// Database settings
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'blood_donation');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// URL path of the project (the folder name inside htdocs)
+// URL path of the project
 define('BASE_URL', '/WebForge');
 
 // Stock thresholds in units: below 10 = LOW, below 5 = CRITICAL
